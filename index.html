@@ -17,6 +17,7 @@
       </a>
       <nav class="main-nav" aria-label="Main navigation">
         <a class="nav-link active" href="#recipes">Recipes</a>
+        <a class="nav-link" href="#import-recipe">Import</a>
         <a class="nav-link" href="#collections">Collections</a>
       </nav>
       <button class="profile-button" type="button" aria-label="Your kitchen profile">
@@ -67,6 +68,20 @@
         </p>
       </section>
 
+      <section class="import-section" id="import-recipe" aria-labelledby="import-heading">
+        <div class="import-copy">
+          <p class="eyebrow">BRING A FAVORITE ALONG</p>
+          <h2 id="import-heading">Import a recipe</h2>
+          <p>Paste a recipe link to get started. Most recipe sites need a local service to import safely.</p>
+        </div>
+        <form class="import-form" id="import-form">
+          <label class="visually-hidden" for="import-url">Recipe URL</label>
+          <input id="import-url" name="url" type="url" inputmode="url" placeholder="https://example.com/your-recipe" autocomplete="url" required>
+          <button class="text-button" type="submit">Add recipe <span aria-hidden="true">↗</span></button>
+          <p class="import-status" id="import-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
       <section class="collections" id="collections" aria-labelledby="collections-heading">
         <div>
           <p class="eyebrow">A LITTLE SOMETHING EXTRA</p>
@@ -86,5 +101,31 @@
       <button class="dialog-close" id="dialog-close" type="button" aria-label="Close recipe">×</button>
       <div id="recipe-detail"></div>
     </dialog>
+    <dialog class="device-dialog" id="device-dialog" aria-labelledby="device-title">
+      <div class="device-view">
+        <header class="device-header">
+          <div>
+            <p class="device-kicker">GATHER · DEVICE PREVIEW</p>
+            <h2 id="device-title"></h2>
+          </div>
+          <button class="device-close" id="device-close" type="button" aria-label="Close device view">×</button>
+        </header>
+        <div class="device-controls">
+          <div class="device-modes" role="group" aria-label="Recipe display mode">
+            <button class="device-mode" type="button" data-device-mode="ingredients" aria-pressed="true">Ingredients</button>
+            <button class="device-mode" type="button" data-device-mode="steps" aria-pressed="false">Steps</button>
+          </div>
+          <span class="device-servings" id="device-servings"></span>
+        </div>
+        <section class="device-page" id="device-page" aria-live="polite"></section>
+        <footer class="device-pagination">
+          <button class="device-page-button" id="device-previous" type="button">← Previous</button>
+          <span id="device-page-count"></span>
+          <button class="device-page-button" id="device-next" type="button">Next →</button>
+        </footer>
+        <p class="device-note" id="device-note">Mock device preview · no Raspberry Pi connection</p>
+      </div>
+    </dialog>
+    <div class="app-toast" id="app-toast" role="status" aria-live="polite" hidden></div>
   </body>
 </html>
